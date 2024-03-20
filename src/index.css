@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --body-background-color: #131722;
+    --text-color: #ffffff;
+  }
+
+  body {
+    background-color: var(--body-background-color);
+    color: var(--text-color);
+  }
+}
+.dark {
+  background-color: #131722;
+}
+.transC{
+ transition: background-color 0.7s ease-in-out;
+}
+body {
+
+  --body-background-color: #ffffff;
+    transition: background-color 0.7s ease-in-out;
+  background-color: var(--body-background-color);
+  color: #131722; 
+overflow-x: hidden;
+ 
+}
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  div {
+    -ms-overflow-style: auto;
+  }
+}
+.hover-layer {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity (0.5) as needed */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.hover-layer:hover {
+  opacity: 1;
+}
+
+.bg{
+    background-color: #1e2436;
+    /* border-bottom: 1px solid #2a324d; */
+
+}
+.classification{
+    background-image: url("./assets/6.jpg");
+    background-size:auto;
+}
+.id{
+    background-image: url("./assets/2.jpg");
+    background-size:contain;
+}
+.my-select option:hover{
+  background-color: #f7fafc !important;
+}
+
+
+.loader {
+          position: relative;
+          display: flex;
+        }
+        .loader:before , .loader:after {
+            content: '';
+            width: 15px;
+            height: 15px;
+            display: inline-block;
+            position: relative;
+            margin: 0  5px  ;
+            border-radius: 50%;
+            color: #1e2436;
+            background: currentColor;
+            box-shadow: 50px 0 ,  -50px 0;
+            animation: left 1s infinite ease-in-out;
+          }
+          .loader:after {
+            color: #067f83;
+            animation: right 1.1s infinite ease-in-out;
+          }
+
+
+        @keyframes right {
+          0% , 100%{transform: translateY(-10px) }
+          50% { transform: translateY(10px) }
+        }
+
+        @keyframes left {
+          0% , 100%{ transform: translateY(10px) }
+          50% { transform: translateY(-10px) }
+        }
