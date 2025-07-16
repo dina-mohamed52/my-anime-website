@@ -10,10 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-<<<<<<< HEAD
     "antd": "^5.26.5",
-=======
->>>>>>> 4d37712fb1e4a5e3f0cd06a807db4411c4151ff6
     "date-fns": "^3.4.0",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.4",
