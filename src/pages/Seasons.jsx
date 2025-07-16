@@ -6,11 +6,12 @@ import React from "react";
 import Header from "../features/AnimeList/Header";
 import Footer from "../ui/Footer";
 import Spinner from "../ui/Spinner";
+
 function Seasons() {
   const currentDate = new Date();
   const year = currentDate.getFullYear();
   let season;
-  // Determine the current season based on the current month
+
   switch (currentDate.getMonth()) {
     case 11:
     case 0:
@@ -34,13 +35,23 @@ function Seasons() {
   const { data, isLoading } = useQuery("animeRecommendations", () =>
     getAnimeRecommendations(year, season)
   );
+
   const { darkMode } = useDarkMode();
+
   return (
-    <div className={`${darkMode ? "bg-gray-800" : "bg-white"}`}>
-      <Header header={`${season} ${year}`} />
-      <div className="container mx-auto mt-[-2.5rem] px-4 py-8">
-        <div className="classification  w-[85rem] h-[8rem] mt-[-0.9rem] ml-[-3.5rem] rounded-lg mb-4 p-8"></div>
-        <div className="grid grid-cols-1   md:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div className={`${darkMode ? "bg-gray-800" : "bg-white"} py-8 px-4`}>
+      {/* ✅ نفس شكل هيدر موفيز */}
+      <div className="mb-6">
+        <Header header={`${season} ${year}`} />
+      </div>
+
+      <div className="container mx-auto ">
+        {/* ✅ نفس خلفية التوب */}
+        <div className="w-full classification bg-gradient-to-r from-teal-300 via-indigo-100 to-purple-300 rounded-lg py-8 px-2 mb-8 text-center">
+
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {isLoading ? (
             <Spinner />
           ) : data && data.data ? (
@@ -51,7 +62,7 @@ function Seasons() {
                 className="relative overflow-hidden"
               >
                 <div
-                  className={`bg-white border border-spacing-2 rounded-md  shadow-2xl  overflow-hidden ${
+                  className={`bg-white border rounded-md shadow-2xl overflow-hidden ${
                     darkMode ? "dark:bg-gray-800" : ""
                   }`}
                 >
@@ -63,8 +74,9 @@ function Seasons() {
                         className="w-full h-[20rem] object-cover transition-opacity duration-300 group-hover:opacity-75"
                       />
                     )}
-                    <div className="rounded-xl absolute inset-0 bg-gray-800 opacity-0 transition-opacity duration-300"></div>
+                    <div className="absolute inset-0 bg-gray-800 opacity-0 transition-opacity duration-300"></div>
                   </div>
+
                   <div className="p-4 relative z-10">
                     <p
                       className={`text-lg font-semibold mb-2 truncate ${
@@ -74,8 +86,8 @@ function Seasons() {
                       {item.title}
                     </p>
                     <p
-                      className={` absolute ml-[15.5rem] mt-[-5rem]  text-xs font-medium text-${
-                        darkMode ? "gray-800" : "white"
+                      className={`absolute top-4 right-4 text-xs font-medium ${
+                        darkMode ? "text-gray-800" : "text-white"
                       } bg-yellow-500 rounded-full py-1 px-2`}
                     >
                       {item.type}
@@ -89,11 +101,6 @@ function Seasons() {
           )}
         </div>
       </div>
-      {!isLoading && (
-        <div className="ml-[-5rem] mb-[-1.5rem] ">
-          <Footer className="absolute w-full bottom-0" />
-        </div>
-      )}
     </div>
   );
 }

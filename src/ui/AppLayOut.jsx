@@ -1,28 +1,26 @@
+import React from "react";
 import { Outlet } from "react-router-dom";
 import NavBar from "./NavBar";
-import React from "react";
-import { useDarkMode } from "../customContexts/DarkModeContext";
 import Footer from "./Footer";
+import { useDarkMode } from "../customContexts/DarkModeContext";
 
 function AppLayout() {
   const { darkMode } = useDarkMode();
+
   return (
-    <div className="flex flex-col h-screen  ">
+    <div className={`min-h-screen flex flex-col ${darkMode ? "bg-gray-900 text-gray-100" : "bg-white text-gray-900"} transition-colors duration-300`}>
+      {/* Navbar */}
       <NavBar />
-      <div
-        className={`flex-grow overflow-y-auto ${
-          darkMode ? "bg-gray-900 text-gray-100" : "bg-white text-gray-900"
-        }
-        transC `}
-        style={{ overflowX: "hidden" }}
-      >
-        <div className=" overflow-x-hidden   py-6 px-4 sm:px-6 lg:px-4 ">
-          <Outlet />
-        </div>
-        <div className="ml-[-4rem]">
-          {/* <Footer className=" absolute w-full  bottom-0  " /> */}
-        </div>
-      </div>
+
+      {/* Main Content */}
+      <main className="flex-grow overflow-y-auto overflow-x-hidden px-4 sm:px-6 lg:px-8 py-6">
+        <Outlet />
+      </main>
+
+      {/* Footer */}
+      <footer className="w-full">
+        <Footer />
+      </footer>
     </div>
   );
 }

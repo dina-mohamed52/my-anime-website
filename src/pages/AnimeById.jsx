@@ -3,7 +3,7 @@
   import { getAnimeById, getAnimeEpisodes } from "../services/fetchApi";
   import { useParams } from "react-router-dom";
 
-  import Footer from "../ui/Footer";
+
 
   import { formatDate } from "../helpers/sorting";
   import Spinner from "../ui/Spinner";
@@ -117,11 +117,11 @@
             </a>
           ))}
         </div>
-        {!animeLoading && (
+        {/* {!animeLoading && (
           <div className="ml-[-5rem] mb-[-1.5rem] pt-4 ">
             <Footer className="absolute w-full bottom-0" />
           </div>
-        )}
+        )} */}
       </>
     );
   }

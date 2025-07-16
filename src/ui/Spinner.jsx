@@ -1,7 +1,11 @@
 import React from "react";
 
 const Spinner = () => {
-  return <span className="loader ml-[35rem] mt-[5rem] p-8 "></span>;
+  return (
+    <div className="flex justify-center items-center min-h-[40vh] w-full">
+      <span className="loader"></span>
+    </div>
+  );
 };
 
 export default Spinner;

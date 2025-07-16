@@ -5,13 +5,19 @@ import { getAlph } from "../../services/fetchApi";
 import Classifications from "./Classifications";
 import Alpha from "./Alpha";
 import { ErrorBoundary } from "react-error-boundary";
-
+import { useDarkMode } from "../../customContexts/DarkModeContext";
+import Bg from "../../assets/6.jpg"
 function ErrorFallback({ error, resetErrorBoundary }) {
   return (
-    <div role="alert">
+    <div role="alert" className="text-red-600 p-4">
       <p>Something went wrong:</p>
       <pre>{error.message}</pre>
-      <button onClick={resetErrorBoundary}>Try again</button>
+      <button
+        onClick={resetErrorBoundary}
+        className="mt-2 px-4 py-2 bg-blue-600 text-white rounded"
+      >
+        Try again
+      </button>
     </div>
   );
 }
@@ -20,12 +26,12 @@ function AnimeClassification() {
   const [selectedLetter, setSelectedLetter] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
+  const { darkMode } = useDarkMode();
 
   const { data, isFetching, isLoading, isError, error, refetch } = useQuery(
     ["animeData", selectedLetter],
     async () => {
       const { data } = await getAlph(selectedLetter);
-      console.log("alpha", data);
       return data;
     },
     { enabled: !!selectedLetter }
@@ -46,14 +52,18 @@ function AnimeClassification() {
     <ErrorBoundary
       FallbackComponent={ErrorFallback}
       onReset={() => {
-        // Reset the state of your app so the error UI is no longer displayed
+        setSelectedLetter(null);
       }}
     >
-      <div className="classification w-[85rem] ml-[-2.5rem] mt-[-0.9rem] text-white p-6">
-        <div>
+      {/* ✅ Full width background with inner content */}
+      <div
+        className="w-full bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `url(${Bg})`, 
+        }}
+      >
+        <div className="max-w-[1440px] mx-auto px-4 py-6">
           <Classifications />
-        </div>
-        <div>
           <Alpha
             selectedLetter={selectedLetter}
             handleLetterClick={handleLetterClick}

@@ -150,48 +150,52 @@ function AnimeList() {
   };
 
   return (
-    <div className="container mx-auto py-8">
+  <>
+  {/* ✅ Full-width section with styled background */}
+  <div className="w-full bg-gradient-to-r classification py-8">
+    <div className="max-w-7xl mx-auto px-4">
       <Header header="Anime List" />
       <AnimeClassification />
-      <div className="mt-[6rem] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-        {seasonData
-          ? seasonData
-              .slice((currentPageNum - 1) * 10, currentPageNum * 10)
-              .map((anime) => (
-                <div key={anime.mal_id} className="flex justify-center">
-                  <AnimeItem key={anime.mal_id} anime={anime} />
-                </div>
-              ))
-          : sortedData.map((anime) => (
-              <div key={anime.mal_id} className="flex justify-center">
-                <AnimeItem key={anime.mal_id} anime={anime} />
-              </div>
-            ))}
-      </div>
-      {hasNextPage && (
-        <button
-          onClick={handleLoadMore}
-          disabled={isFetching}
-          className=" ml-[68rem] gap-4 w-[10rem] bg-blue-900 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
-        >
-          {isFetching ? "Loading..." : "Next Page"} &rarr;
-        </button>
-      )}
+    </div>
+  </div>
+
+  {/* ✅ Anime cards and pagination inside a centered container */}
+  <div className="container mx-auto px-4 py-8">
+    <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-6">
+      {(seasonData || sortedData)
+        .slice((currentPageNum - 1) * 10, currentPageNum * 10)
+        .map((anime) => (
+          <div key={anime.mal_id} className="flex justify-center">
+            <AnimeItem anime={anime} />
+          </div>
+        ))}
+    </div>
+
+    <div className="flex justify-center flex-wrap gap-4 mt-8">
       {currentPageNum > 1 && (
         <button
           onClick={handlePrevLoad}
           disabled={isFetching && currentPageNum === 1}
-          className="  ml-[68rem]  block w-[10rem] bg-blue-900 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+          className="w-40 bg-blue-900 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition"
         >
           &larr; {isFetching ? "Loading..." : "Prev Page"}
         </button>
       )}
-      {!isLoading && (
-        <div className="ml-[-6rem] mb-[-3.5rem] pt-4 ">
-          <Footer className="absolute w-full bottom-0" />
-        </div>
+
+      {hasNextPage && (
+        <button
+          onClick={handleLoadMore}
+          disabled={isFetching}
+          className="w-40 bg-blue-900 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition"
+        >
+          {isFetching ? "Loading..." : "Next Page"} &rarr;
+        </button>
       )}
     </div>
+  </div>
+</>
+
+
   );
 }
 
