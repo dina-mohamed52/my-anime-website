@@ -40,11 +40,19 @@ function Home() {
           <RecommendationSec data={recomData} isLoading={Isloading2} />
         </div>
       </div>
+<<<<<<< HEAD
       {/* {!Isloading1 && !Isloading2 && !Isloading3 && (
         <div className="ml-[-4.9rem] mb-[-1.5rem] ">
           <Footer className="absolute w-full bottom-0" />
         </div>
       )} */}
+=======
+      {!Isloading1 && !Isloading2 && !Isloading3 && (
+        <div className="ml-[-4.9rem] mb-[-1.5rem] ">
+          <Footer className="absolute w-full bottom-0" />
+        </div>
+      )}
+>>>>>>> 4d37712fb1e4a5e3f0cd06a807db4411c4151ff6
     </div>
   );
 }

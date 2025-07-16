@@ -6,12 +6,10 @@ import React from "react";
 import Header from "../features/AnimeList/Header";
 import Footer from "../ui/Footer";
 import Spinner from "../ui/Spinner";
-
 function Seasons() {
   const currentDate = new Date();
   const year = currentDate.getFullYear();
   let season;
-
   switch (currentDate.getMonth()) {
     case 11:
     case 0:
