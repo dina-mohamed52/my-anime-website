@@ -5,7 +5,6 @@ import { getAlph } from "../../services/fetchApi";
 import Classifications from "./Classifications";
 import Alpha from "./Alpha";
 import { ErrorBoundary } from "react-error-boundary";
-<<<<<<< HEAD
 import { useDarkMode } from "../../customContexts/DarkModeContext";
 import Bg from "../../assets/6.jpg"
 function ErrorFallback({ error, resetErrorBoundary }) {
@@ -19,15 +18,6 @@ function ErrorFallback({ error, resetErrorBoundary }) {
       >
         Try again
       </button>
-=======
-
-function ErrorFallback({ error, resetErrorBoundary }) {
-  return (
-    <div role="alert">
-      <p>Something went wrong:</p>
-      <pre>{error.message}</pre>
-      <button onClick={resetErrorBoundary}>Try again</button>
->>>>>>> 4d37712fb1e4a5e3f0cd06a807db4411c4151ff6
     </div>
   );
 }
@@ -36,19 +26,12 @@ function AnimeClassification() {
   const [selectedLetter, setSelectedLetter] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
-<<<<<<< HEAD
   const { darkMode } = useDarkMode();
-=======
->>>>>>> 4d37712fb1e4a5e3f0cd06a807db4411c4151ff6
 
   const { data, isFetching, isLoading, isError, error, refetch } = useQuery(
     ["animeData", selectedLetter],
     async () => {
       const { data } = await getAlph(selectedLetter);
-<<<<<<< HEAD
-=======
-      console.log("alpha", data);
->>>>>>> 4d37712fb1e4a5e3f0cd06a807db4411c4151ff6
       return data;
     },
     { enabled: !!selectedLetter }
@@ -69,7 +52,6 @@ function AnimeClassification() {
     <ErrorBoundary
       FallbackComponent={ErrorFallback}
       onReset={() => {
-<<<<<<< HEAD
         setSelectedLetter(null);
       }}
     >
@@ -82,16 +64,6 @@ function AnimeClassification() {
       >
         <div className="max-w-[1440px] mx-auto px-4 py-6">
           <Classifications />
-=======
-        // Reset the state of your app so the error UI is no longer displayed
-      }}
-    >
-      <div className="classification w-[85rem] ml-[-2.5rem] mt-[-0.9rem] text-white p-6">
-        <div>
-          <Classifications />
-        </div>
-        <div>
->>>>>>> 4d37712fb1e4a5e3f0cd06a807db4411c4151ff6
           <Alpha
             selectedLetter={selectedLetter}
             handleLetterClick={handleLetterClick}

@@ -3,11 +3,6 @@
   import { getAnimeById, getAnimeEpisodes } from "../services/fetchApi";
   import { useParams } from "react-router-dom";
 
-<<<<<<< HEAD
-
-=======
-  import Footer from "../ui/Footer";
->>>>>>> 4d37712fb1e4a5e3f0cd06a807db4411c4151ff6
 
   import { formatDate } from "../helpers/sorting";
   import Spinner from "../ui/Spinner";
@@ -121,19 +116,11 @@
             </a>
           ))}
         </div>
-<<<<<<< HEAD
         {/* {!animeLoading && (
           <div className="ml-[-5rem] mb-[-1.5rem] pt-4 ">
             <Footer className="absolute w-full bottom-0" />
           </div>
         )} */}
-=======
-        {!animeLoading && (
-          <div className="ml-[-5rem] mb-[-1.5rem] pt-4 ">
-            <Footer className="absolute w-full bottom-0" />
-          </div>
-        )}
->>>>>>> 4d37712fb1e4a5e3f0cd06a807db4411c4151ff6
       </>
     );
   }
